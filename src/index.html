@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Starter</title>
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+        />
+        <title>Web Component Display API Green CO2</title>
 
-    <script type="module" src="/build/web-component-display-api-green-co2.esm.js"></script>
-    <script nomodule src="/build/web-component-display-api-green-co2.js"></script>
-  </head>
-  <body>
-  </body>
+        <script
+            type="module"
+            src="/build/web-component-display-api-green-co2.esm.js"
+        ></script>
+        <script
+            nomodule
+            src="/build/web-component-display-api-green-co2.js"
+        ></script>
+    </head>
+    <body>
+        <pg-api-tree-co2
+            api-host="http://localhost"
+            user-token="123ecf643688308a2b4c47ad2da8c6f008"
+            month-type="rolling"
+        ></pg-api-tree-co2>
+    </body>
 </html>

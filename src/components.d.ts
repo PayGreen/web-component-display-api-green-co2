@@ -6,19 +6,56 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface PgApiTreeCo2 {
+        /**
+          * The Host of the API
+         */
+        "apiHost": string;
+        /**
+          * The type of the month to report
+         */
+        "monthType": string;
+        /**
+          * The statisticsToken of the ApiUser
+         */
+        "userToken": string;
+    }
 }
 declare global {
+    interface HTMLPgApiTreeCo2Element extends Components.PgApiTreeCo2, HTMLStencilElement {
+    }
+    var HTMLPgApiTreeCo2Element: {
+        prototype: HTMLPgApiTreeCo2Element;
+        new (): HTMLPgApiTreeCo2Element;
+    };
     interface HTMLElementTagNameMap {
+        "pg-api-tree-co2": HTMLPgApiTreeCo2Element;
     }
 }
 declare namespace LocalJSX {
+    interface PgApiTreeCo2 {
+        /**
+          * The Host of the API
+         */
+        "apiHost": string;
+        /**
+          * The type of the month to report
+         */
+        "monthType"?: string;
+        /**
+          * The statisticsToken of the ApiUser
+         */
+        "userToken": string;
+    }
     interface IntrinsicElements {
+        "pg-api-tree-co2": PgApiTreeCo2;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "pg-api-tree-co2": LocalJSX.PgApiTreeCo2 & JSXBase.HTMLAttributes<HTMLPgApiTreeCo2Element>;
         }
     }
 }
