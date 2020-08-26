@@ -30,11 +30,24 @@ export class PgApiTreeCo2 {
     async componentWillLoad() {
         const helper = new ApiRequestHelper(this.apiHost, this.userToken);
         this.apiResponse = await helper.getCarbonStatistics(this.monthType);
+
+        console.log(this.apiResponse);
     }
 
     render() {
-        const { carbonEmitted, carbonOffset } = this.apiResponse.data;
+        const {
+            status,
+            data: { carbonEmitted, carbonOffset, detail },
+        } = this.apiResponse;
 
+        if (status !== 200) {
+            return (
+                <div class="pg-card-alert">
+                    <h6>Alerte</h6>
+                    <span>{detail}</span>
+                </div>
+            );
+        }
         return (
             <div class="pg-card">
                 <div class="pg-card-content">
