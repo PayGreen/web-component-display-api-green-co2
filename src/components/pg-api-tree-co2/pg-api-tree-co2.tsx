@@ -50,42 +50,13 @@ export class PgApiTreeCo2 {
         }
         return (
             <div class="pg-card">
-                <div class="pg-card-content">
-                    <div>
-                        <h6>Bilan carbone</h6>
-
-                        <span>
-                            Grâce à notre effort collectif, nous avons compensé{' '}
-                            <span class="pg-card-content-value">
-                                {(carbonOffset / carbonEmitted) * 100}
-                            </span>
-                            % de nos émissions de CO2 !
-                        </span>
-                    </div>
-
-                    <div>
-                        <h6>CO2 compensé</h6>
-
-                        <span>
-                            <span class="pg-card-content-value">
-                                {carbonOffset}
-                            </span>{' '}
-                            TeqCO2*
-                        </span>
-                    </div>
-
-                    <div>
-                        <h6>CO2 émis</h6>
-
-                        <span>
-                            <span class="pg-card-content-value">
-                                {carbonEmitted}
-                            </span>{' '}
-                            TeqCO2*
-                        </span>
-                    </div>
-                </div>
-                <span class="pg-card-note">* Tonne par équivalent CO2.</span>
+                <p>
+                    {carbonEmitted / 1000} Kg CO<sub>2</sub>eq Émis.
+                </p>
+                <p>
+                    {carbonOffset / 1000} Kg CO<sub>2</sub>eq Compensé.
+                </p>
+                <p>Pour l'activité d'achat en ligne de nos clients.</p>
             </div>
         );
     }

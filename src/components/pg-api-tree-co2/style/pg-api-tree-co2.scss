@@ -1,0 +1,19 @@
+.pg-card {
+  position: reative;
+  max-width: 560px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 40px;
+  padding-right: 40px;
+
+  border-radius: 12px;
+
+  background-color: white;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
+
+  transition: all 0.3s;
+}
+
+.pg-card:hover {
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.3);
+}
