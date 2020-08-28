@@ -14,7 +14,7 @@ export namespace Components {
         /**
           * The color of the widget
          */
-        "cardColor": string;
+        "cardColor"?: string;
         /**
           * The type of the month to report
          */

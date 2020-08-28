@@ -26,7 +26,7 @@ export class PgApiTreeCo2 {
     /**
      * The color of the widget
      */
-    @Prop() cardColor: string;
+    @Prop() cardColor?: string = colorDefault;
 
     /**
      * The response of the API
@@ -36,10 +36,13 @@ export class PgApiTreeCo2 {
     async componentWillLoad() {
         const helper = new ApiRequestHelper(this.apiHost, this.userToken);
         this.apiResponse = await helper.getCarbonStatistics(this.monthType);
-
-        console.log(this.apiResponse);
     }
 
+    /**
+     * Convert a CarbonReport value expressed in tonCo2Eq into kgCo2Eq
+     * @param {number} tonCo2Eq
+     * @returns {string}
+     */
     private convertToKg(tonCo2Eq: number): string {
         let kgCo2Eq = tonCo2Eq * 1000;
 
@@ -61,15 +64,13 @@ export class PgApiTreeCo2 {
             );
         }
 
-        let cardStyle = new String('pg-card pg-').concat(
-            this.cardColor &&
-                Object.values(colorOptions).includes(this.cardColor)
-                ? this.cardColor
-                : colorDefault,
-        );
+        let cardStyle =
+            this.cardColor && Object.keys(colorOptions).includes(this.cardColor)
+                ? colorOptions[this.cardColor]
+                : colorDefault;
         return (
-            <div class={cardStyle}>
-                <div class="pg-text">
+            <div class={`pg-card ${cardStyle}`}>
+                <div class="pg-text pg-emitted">
                     <span class="pg-carbon-stats">
                         {this.convertToKg(carbonEmitted)}
                     </span>{' '}
@@ -78,7 +79,7 @@ export class PgApiTreeCo2 {
                         CO<sub>2</sub>eq Émis
                     </strong>
                 </div>
-                <div class="pg-text">
+                <div class="pg-text pg-offset">
                     <span class="pg-carbon-stats">
                         {this.convertToKg(carbonOffset)}
                     </span>{' '}

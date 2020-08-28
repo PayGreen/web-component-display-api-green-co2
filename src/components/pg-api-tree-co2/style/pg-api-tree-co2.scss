@@ -41,12 +41,12 @@ $danger-light: #f7d7d0;
     box-shadow: 3px 3px 20px rgba($black00, 0.2);
 
     transition: all 0.3s;
-}
 
-.pg-card:hover,
-.pg-card:focus,
-.pg-card:active {
-    box-shadow: 3px 3px 20px rgba($black00, 0.3);
+    &:hover,
+    &:focus,
+    &:active {
+        box-shadow: 3px 3px 20px rgba($black00, 0.3);
+    }
 }
 
 .pg-card * {
@@ -65,53 +65,68 @@ $danger-light: #f7d7d0;
 .pg-text {
     line-height: 1.5;
     font-size: 1.2rem;
-}
 
-.pg-text > .pg-carbon-stats {
-    font-size: 2.1rem;
-}
+    & > .pg-carbon-stats {
+        font-size: 2.1rem;
+    }
 
-.pg-text > strong {
-    font-weight: 700;
+    & > strong {
+        font-weight: 700;
+    }
 }
 
 .pg-default {
     background-color: $white10;
+
+    .pg-emitted > strong,
+    .pg-emitted > .pg-carbon-stats {
+        color: $tertiary-main;
+    }
+
+    .pg-offset > strong,
+    .pg-offset > .pg-carbon-stats {
+        color: $primary-main;
+    }
 }
 
 .pg-primary {
     background-color: $primary-light;
-}
-.pg-primary strong {
-    color: $primary-main;
+    strong,
+    .pg-carbon-stats {
+        color: $primary-main;
+    }
 }
 
 .pg-secondary {
     background-color: $secondary-light;
-}
-.pg-secondary strong {
-    color: $secondary-main;
+    strong,
+    .pg-carbon-stats {
+        color: $secondary-main;
+    }
 }
 
 .pg-tertiary {
     background-color: $tertiary-light;
-}
-.pg-tertiary strong {
-    color: $tertiary-main;
+    strong,
+    .pg-carbon-stats {
+        color: $tertiary-main;
+    }
 }
 
 .pg-quaternary {
     background-color: $quaternary-light;
-}
-.pg-quaternary strong {
-    color: $quaternary-main;
+    strong,
+    .pg-carbon-stats {
+        color: $quaternary-main;
+    }
 }
 
 .pg-quinary {
     background-color: $quinary-light;
-}
-.pg-quinary strong {
-    color: $quinary-main;
+    strong,
+    .pg-carbon-stats {
+        color: $quinary-main;
+    }
 }
 
 .pg-danger {
