@@ -1,5 +1,6 @@
 import { Component, h, Prop, State } from '@stencil/core';
 import ApiRequestHelper from '../../utils/ApiRequestHelper';
+import { colorOptions, colorDefault } from '../../shared/constants';
 
 @Component({
     tag: 'pg-api-tree-co2',
@@ -23,6 +24,11 @@ export class PgApiTreeCo2 {
     @Prop() monthType: string = ApiRequestHelper.DEFAULT_MONTH_TYPE;
 
     /**
+     * The color of the widget
+     */
+    @Prop() cardColor?: string = colorDefault;
+
+    /**
      * The response of the API
      */
     @State() apiResponse: any;
@@ -30,8 +36,17 @@ export class PgApiTreeCo2 {
     async componentWillLoad() {
         const helper = new ApiRequestHelper(this.apiHost, this.userToken);
         this.apiResponse = await helper.getCarbonStatistics(this.monthType);
+    }
 
-        console.log(this.apiResponse);
+    /**
+     * Convert a CarbonReport value expressed in tonCo2Eq into kgCo2Eq
+     * @param {number} tonCo2Eq
+     * @returns {string}
+     */
+    private convertToKg(tonCo2Eq: number): string {
+        let kgCo2Eq = tonCo2Eq * 1000;
+
+        return kgCo2Eq.toFixed(2);
     }
 
     render() {
@@ -42,50 +57,40 @@ export class PgApiTreeCo2 {
 
         if (status !== 200) {
             return (
-                <div class="pg-card-alert">
-                    <h6>Alerte</h6>
-                    <span>{detail}</span>
+                <div class="pg-card pg-danger">
+                    <div class="pg-title">Erreur</div>
+                    <div class="pg-text">{detail}</div>
                 </div>
             );
         }
+
+        let cardStyle =
+            this.cardColor && Object.keys(colorOptions).includes(this.cardColor)
+                ? colorOptions[this.cardColor]
+                : colorDefault;
         return (
-            <div class="pg-card">
-                <div class="pg-card-content">
-                    <div>
-                        <h6>Bilan carbone</h6>
-
-                        <span>
-                            Grâce à notre effort collectif, nous avons compensé{' '}
-                            <span class="pg-card-content-value">
-                                {(carbonOffset / carbonEmitted) * 100}
-                            </span>
-                            % de nos émissions de CO2 !
-                        </span>
-                    </div>
-
-                    <div>
-                        <h6>CO2 compensé</h6>
-
-                        <span>
-                            <span class="pg-card-content-value">
-                                {carbonOffset}
-                            </span>{' '}
-                            TeqCO2*
-                        </span>
-                    </div>
-
-                    <div>
-                        <h6>CO2 émis</h6>
-
-                        <span>
-                            <span class="pg-card-content-value">
-                                {carbonEmitted}
-                            </span>{' '}
-                            TeqCO2*
-                        </span>
-                    </div>
+            <div class={`pg-card ${cardStyle}`}>
+                <div class="pg-text pg-emitted">
+                    <span class="pg-carbon-stats">
+                        {this.convertToKg(carbonEmitted)}
+                    </span>{' '}
+                    Kg{' '}
+                    <strong>
+                        CO<sub>2</sub>eq Émis
+                    </strong>
                 </div>
-                <span class="pg-card-note">* Tonne par équivalent CO2.</span>
+                <div class="pg-text pg-offset">
+                    <span class="pg-carbon-stats">
+                        {this.convertToKg(carbonOffset)}
+                    </span>{' '}
+                    Kg{' '}
+                    <strong>
+                        CO<sub>2</sub>eq Compensé
+                    </strong>
+                </div>
+                <div class="pg-text">
+                    Pour l'activité d'achat en ligne de nos clients
+                </div>
             </div>
         );
     }

@@ -12,6 +12,10 @@ export namespace Components {
          */
         "apiHost": string;
         /**
+          * The color of the widget
+         */
+        "cardColor"?: string;
+        /**
           * The type of the month to report
          */
         "monthType": string;
@@ -38,6 +42,10 @@ declare namespace LocalJSX {
           * The Host of the API
          */
         "apiHost": string;
+        /**
+          * The color of the widget
+         */
+        "cardColor"?: string;
         /**
           * The type of the month to report
          */
