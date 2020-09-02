@@ -1,135 +1,101 @@
-/* Color pallet */
-$white00: #ffffff;
-$white10: #fafafa;
-$white20: #f6f6f6;
+$transition: .3s;
+$progressSize: 8px;
 
-$grey10: #eeeeee;
-$grey20: #dbdbdb;
-$grey30: #aaaaaa;
-$grey40: #858585;
-$grey50: #636363;
-$grey60: #434343;
-
-$black00: #000000;
-
-$primary-main: #33ad73;
-$primary-light: #d5f3e5;
-
-$secondary-main: #00a99d;
-$secondary-light: #e1f3f2;
-
-$tertiary-main: #e58a28;
-$tertiary-light: #fbe6ce;
-
-$quaternary-main: #ec6a6a;
-$quaternary-light: #ffe0e1;
-
-$quinary-main: #a26ae1;
-$quinary-light: #e9d9fb;
-
-$danger-main: #b54025;
-$danger-light: #f7d7d0;
-
-.pg-card {
-    position: relative;
-
-    max-width: 400px;
-    padding: 12px 40px;
-    border-radius: 12px;
-
-    color: $grey60;
-    box-shadow: 3px 3px 20px rgba($black00, 0.2);
-
-    transition: all 0.3s;
+.pg-co2-card {
+    display: inline-block;
+    text-align: left;
+    padding: .7em;
+    border-radius: .5em;
 
     &:hover,
-    &:focus,
-    &:active {
-        box-shadow: 3px 3px 20px rgba($black00, 0.3);
+    &:active,
+    &:focus {
+        .pg-co2-card {
+            &__chart {
+                margin-top: .6em;
+                opacity: 1;
+                height: $progressSize * 2;
+                transition-delay: 0s, $transition;
+            }
+        }
+    }
+
+    &:not(:hover):not(:active):not(:focus) {
+        .pg-co2-card {
+            &__chart {
+                &__progress-bar {
+                    &__value {
+                        width: 0 !important;
+                        transition-duration: 0s;
+                        transition-delay: $transition;
+                    }
+                }
+            }
+        }
+    }
+
+    &__offset {
+        &__amount {
+            font-size: 1.8em;
+
+            small {
+                font-size: 0.6em;
+                font-weight: bold;
+            }
+        }
+
+        &__unit {
+            margin: 0 .3em;
+        }
+
+        &__text {
+            font-weight: bold;
+        }
+    }
+
+    &__legend {
+        text-transform: uppercase;
+        font-size: .7em;
+        letter-spacing: .15em;
+        margin: .5em 0;
+    }
+
+    &__chart {
+        display: flex;
+        align-items: center;
+        height: 0;
+        opacity: 0;
+        transition-property: all, opacity;
+        transition-duration: $transition;
+        transition-delay: $transition, 0s;
+
+        &__progress-bar {
+            flex: 1;
+            box-sizing: border-box;
+            border-style: solid;
+            border-width: 1px;
+            height: $progressSize;
+            border-radius: $progressSize/2;
+            
+            &__value {
+                height: 100%;
+                transition: all $transition;
+                transition-delay: $transition*2;
+            }
+        }
+
+        &__value {
+            margin-left: .5em;
+            font-size: .8em;
+        }
+    }
+
+    &__danger {
+        color: #b54025;
+        background-color: #f7d7d0;
     }
 }
 
-.pg-card * {
-    @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
-    font-family: 'Open Sans', sans-serif;
-    text-align: center;
-}
-
-.pg-title {
-    font-size: 2.1rem;
-    font-weight: 700;
-
-    text-transform: uppercase;
-}
-
-.pg-text {
-    line-height: 1.5;
-    font-size: 1.2rem;
-
-    & > .pg-carbon-stats {
-        font-size: 2.1rem;
-    }
-
-    & > strong {
-        font-weight: 700;
-    }
-}
-
-.pg-default {
-    background-color: $white10;
-
-    .pg-emitted > strong,
-    .pg-emitted > .pg-carbon-stats {
-        color: $tertiary-main;
-    }
-
-    .pg-offset > strong,
-    .pg-offset > .pg-carbon-stats {
-        color: $primary-main;
-    }
-}
-
-.pg-primary {
-    background-color: $primary-light;
-    strong,
-    .pg-carbon-stats {
-        color: $primary-main;
-    }
-}
-
-.pg-secondary {
-    background-color: $secondary-light;
-    strong,
-    .pg-carbon-stats {
-        color: $secondary-main;
-    }
-}
-
-.pg-tertiary {
-    background-color: $tertiary-light;
-    strong,
-    .pg-carbon-stats {
-        color: $tertiary-main;
-    }
-}
-
-.pg-quaternary {
-    background-color: $quaternary-light;
-    strong,
-    .pg-carbon-stats {
-        color: $quaternary-main;
-    }
-}
-
-.pg-quinary {
-    background-color: $quinary-light;
-    strong,
-    .pg-carbon-stats {
-        color: $quinary-main;
-    }
-}
-
-.pg-danger {
-    color: $danger-main;
-    background-color: $danger-light;
+a.pg-co2-card {
+    text-decoration: none;
 }
