@@ -12,13 +12,29 @@ export namespace Components {
          */
         "apiHost": string;
         /**
-          * The color of the widget
+          * The link of the widget
          */
-        "cardColor"?: string;
+        "colorBg"?: string;
+        /**
+          * The link of the widget
+         */
+        "colorMain"?: string;
+        /**
+          * The link of the widget
+         */
+        "colorText"?: string;
         /**
           * The type of the month to report
          */
         "monthType": string;
+        /**
+          * The link of the widget
+         */
+        "targetLink"?: string;
+        /**
+          * The legend of the widget
+         */
+        "textLegend"?: string;
         /**
           * The statisticsToken of the ApiUser
          */
@@ -43,13 +59,29 @@ declare namespace LocalJSX {
          */
         "apiHost": string;
         /**
-          * The color of the widget
+          * The link of the widget
          */
-        "cardColor"?: string;
+        "colorBg"?: string;
+        /**
+          * The link of the widget
+         */
+        "colorMain"?: string;
+        /**
+          * The link of the widget
+         */
+        "colorText"?: string;
         /**
           * The type of the month to report
          */
         "monthType"?: string;
+        /**
+          * The link of the widget
+         */
+        "targetLink"?: string;
+        /**
+          * The legend of the widget
+         */
+        "textLegend"?: string;
         /**
           * The statisticsToken of the ApiUser
          */
