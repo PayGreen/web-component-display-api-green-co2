@@ -1,0 +1,29 @@
+name: deploy version on npm
+
+# Run this workflow every time a new commit pushed to your repository
+on:
+  create:
+    tags:
+      - "*"
+
+jobs:
+  # Set the job key. The key is displayed as the job name
+  # when a job name is not provided
+  npm-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks out a copy of your repository on the ubuntu-latest machine
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run build
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.16.3
+          registry-url: https://registry.npmjs.org/
+      - run: npm install
+      - run: npm run build
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
