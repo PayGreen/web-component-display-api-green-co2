@@ -11,13 +11,8 @@ jobs:
   # when a job name is not provided
   npm-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      # Checks out a copy of your repository on the ubuntu-latest machine
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Run build
+      - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 12.16.3
