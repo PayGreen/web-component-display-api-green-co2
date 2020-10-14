@@ -1,6 +1,6 @@
 {
     "name": "web-component-display-api-green-co2",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "A web component to display your carbon statistics with the Green API.",
     "main": "dist/index.js",
     "module": "dist/index.mjs",
