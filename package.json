@@ -1,9 +1,9 @@
 {
     "name": "web-component-display-api-green-co2",
     "version": "0.0.6",
-    "description": "Stencil Component Starter",
-    "main": "dist/index.cjs.js",
-    "module": "dist/custom-elements/index.js",
+    "description": "A web component to display your carbon statistics with the Green API.",
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
     "es2015": "dist/esm/index.mjs",
     "es2017": "dist/esm/index.mjs",
     "types": "dist/types/index.d.ts",
